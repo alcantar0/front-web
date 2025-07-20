@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { ChevronDown } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link";
 
 export default function FAQPage() {
   return (
@@ -19,9 +20,9 @@ export default function FAQPage() {
             <span className="text-xl font-bold">Apoio Calouros</span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-600 hover:text-gray-900">
+            <Link href="/" className="text-gray-600 hover:text-gray-900">
               Início
-            </a>
+            </Link>
             <a href="#" className="text-gray-600 hover:text-gray-900">
               FAQ
             </a>
