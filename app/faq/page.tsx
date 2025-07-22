@@ -17,7 +17,9 @@ export default function FAQPage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <Image src="/images/logo.png" alt="Sistema de Apoio a Calouros" width={40} height={40} className="mr-2" />
-            <span className="text-xl font-bold">Apoio Calouros</span>
+            <Link href="/" className="text-xl font-bold">
+              <span className="text-xl font-bold">ApoiaUFC</span>
+            </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-600 hover:text-gray-900">
@@ -36,7 +38,9 @@ export default function FAQPage() {
               </button>
             </div>
           </nav>
-          <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
+          <Link href="/login">
+            <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
+          </Link>
         </div>
       </header>
 

@@ -11,7 +11,9 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="mr-2" />
-            <span className="text-xl font-bold">Logo</span>
+            <Link href="/" className="text-xl font-bold">
+              <span className="text-xl font-bold">ApoiaUFC</span>
+            </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-600 hover:text-gray-900">Início</Link>
@@ -24,7 +26,9 @@ export default function HomePage() {
               </button>
             </div>
           </nav>
-          <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
+          <Link href="/login">
+            <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
+          </Link>
         </div>
       </header>
 
@@ -37,8 +41,12 @@ export default function HomePage() {
               Descubra uma plataforma projetada para facilitar sua jornada acadêmica. Conecte-se, aprenda e compartilhe com outros alunos.
             </p>
             <div className="flex space-x-4">
-              <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
-              <Button variant="outline" className="border-gray-400">Cadastrar</Button>
+              <Link href="/login">
+                <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
+              </Link>
+              <Link href="/register">
+                <Button variant="outline" className="border-gray-400">Cadastrar</Button>
+              </Link>
             </div>
           </div>
           <div className="w-full lg:w-1/2 h-64 bg-gray-200 rounded-xl flex items-center justify-center">
