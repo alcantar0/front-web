@@ -23,20 +23,40 @@ export default function EntrarPage() {
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsLoading(true)
 
-    // Simular login
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+  try {
+    // 🟢 Código que vai no FRONTEND (Next.js)
+    const response = await fetch("https://back-web-o13t.onrender.com/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.email,
+        password: formData.senha,
+      }),
+    })
 
-    console.log("Dados do login:", formData)
+    const data = await response.json()
+
+    if (!response.ok) {
+      alert(data.error || "Erro no login")
+      return
+    }
+
+    localStorage.setItem("token", data.token)
     alert("Login realizado com sucesso!")
-
-    setIsLoading(false)
-    // Redirecionar para dashboard ou página principal
     router.push("/")
+  } catch (err) {
+    console.error("Erro na requisição:", err)
+    alert("Erro ao conectar à API")
+  } finally {
+    setIsLoading(false)
   }
+}
 
   return (
     <div className="min-h-screen flex">

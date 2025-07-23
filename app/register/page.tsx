@@ -25,19 +25,38 @@ export default function CadastroPage() {
     }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsLoading(true)
 
-    // Simular cadastro
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+  try {
+    const response = await fetch("https://back-web-o13t.onrender.com/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.email,
+        password: formData.senha,
+      }),
+    })
 
-    console.log("Dados do cadastro:", formData)
+    const data = await response.json()
+
+    if (!response.ok) {
+      alert(data.error || "Erro no cadastro")
+      return
+    }
+
     alert("Cadastro realizado com sucesso!")
-
-    setIsLoading(false)
     router.push("/login")
+  } catch (error) {
+    console.error("Erro ao cadastrar:", error)
+    alert("Erro na conexão com a API")
+  } finally {
+    setIsLoading(false)
   }
+}
 
   return (
     <div className="min-h-screen flex">
