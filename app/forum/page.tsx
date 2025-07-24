@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 interface Question {
   id: number
@@ -54,6 +56,35 @@ export default function ForumPage() {
   }, [])
 
   return (
+
+        <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="bg-white border-b">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center">
+            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="mr-2" />
+            <Link href="/" className="text-xl font-bold">
+              <span className="text-xl font-bold">ApoiaUFC</span>
+            </Link>
+          </div>
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link href="/" className="text-gray-600 hover:text-gray-900">Início</Link>
+            <Link href="/faq" className="text-gray-600 hover:text-gray-900">FAQ</Link>
+            <a href="#" className="text-gray-600 hover:text-gray-900">Fórum</a>
+            <div className="relative group">
+              <button className="text-gray-600 hover:text-gray-900 flex items-center">
+                Mais Opções
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </button>
+            </div>
+          </nav>
+          <Link href="/login">
+            <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
+          </Link>
+        </div>
+
+      </header>
+
     <div className="container mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-6">Fórum de Perguntas</h1>
 
@@ -93,6 +124,7 @@ export default function ForumPage() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   )
 }

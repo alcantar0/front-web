@@ -16,9 +16,10 @@ export default function HomePage() {
             </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">Início</Link>
             <Link href="/faq" className="text-gray-600 hover:text-gray-900">FAQ</Link>
-            <a href="#" className="text-gray-600 hover:text-gray-900">Fórum</a>
+            <Link href="/forum" className="text-gray-600 hover:text-gray-900">Fórum</Link>
+            <Link href="/forum" className="text-gray-600 hover:text-gray-900">Materiais de apoio</Link>
+
             <div className="relative group">
               <button className="text-gray-600 hover:text-gray-900 flex items-center">
                 Mais Opções
@@ -26,9 +27,9 @@ export default function HomePage() {
               </button>
             </div>
           </nav>
-          <Link href="/login">
+          {/* <Link href="/login">
             <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
-          </Link>
+          </Link> */}
         </div>
       </header>
 
