@@ -5,32 +5,16 @@ export const metadata = {
 
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { ChevronDown } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link";
+import Navbar from "@/components/navbar/navbar"
+import Footer from "@/components/footer/footer";
+
 
 export default function FAQPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <Image src="/images/logo.png" alt="Sistema de Apoio a Calouros" width={40} height={40} className="mr-2" />
-            <Link href="/" className="text-xl font-bold">
-              <span className="text-xl font-bold">ApoiaUFC</span>
-            </Link>
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
-              Início
-            </Link>
-            <Link href="/forum" className="text-gray-600 hover:text-gray-900">
-              Fórum
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative bg-gray-600 text-white py-20 overflow-hidden">
@@ -124,26 +108,14 @@ export default function FAQPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ainda tem dúvidas?</h2>
           <p className="text-gray-600 mb-8 max-w-md mx-auto">Entre em contato conosco para mais informações.</p>
-          <p>duvidas@ufc.com.br</p>
+          <Button variant="outline" className="px-8 bg-transparent">
+            Contate-nos
+          </Button>
         </div>
       </section>
 
-          <hr className="border-gray-200 mb-8" />
-
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-            <div className="flex flex-wrap gap-6 mb-4 md:mb-0">
-              <a href="#" className="hover:text-gray-900">
-                Política de Privacidade
-              </a>
-              <a href="#" className="hover:text-gray-900">
-                Termos de Serviço
-              </a>
-              <a href="#" className="hover:text-gray-900">
-                Configurações de Cookies
-              </a>
-            </div>
-            <div>© 2025 UFC. Todos os direitos reservados.</div>
-          </div>
-        </div>
+      {/* Footer */}
+      <Footer />
+    </div>
   )
 }
