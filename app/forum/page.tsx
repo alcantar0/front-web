@@ -1,10 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+
+
+import { useRouter } from 'next/navigation'
 
 interface Question {
   id: number
@@ -14,6 +17,22 @@ interface Question {
 }
 
 export default function ForumPage() {
+  const router = useRouter()
+
+  const hasRun = useRef(false) // ⚠️ evitar múltiplas execuções
+
+  useEffect(() => {
+    if (hasRun.current) return
+    hasRun.current = true
+
+    const token = localStorage.getItem('token')
+
+    if (!token) {
+      alert('É preciso estar logado antes')
+      router.push('/login')
+    }
+  }, [])
+
   const [questions, setQuestions] = useState<Question[]>([])
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
@@ -57,7 +76,7 @@ export default function ForumPage() {
 
   return (
 
-        <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-white border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
