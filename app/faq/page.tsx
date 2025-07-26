@@ -5,44 +5,16 @@ export const metadata = {
 
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { ChevronDown } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link";
+import Navbar from "@/components/navbar/navbar"
+import Footer from "@/components/footer/footer";
+
 
 export default function FAQPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <Image src="/images/logo.png" alt="Sistema de Apoio a Calouros" width={40} height={40} className="mr-2" />
-            <Link href="/" className="text-xl font-bold">
-              <span className="text-xl font-bold">ApoiaUFC</span>
-            </Link>
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
-              Início
-            </Link>
-            <a href="#" className="text-gray-600 hover:text-gray-900">
-              FAQ
-            </a>
-            <a href="#" className="text-gray-600 hover:text-gray-900">
-              Forum
-            </a>
-            <div className="relative group">
-              <button className="text-gray-600 hover:text-gray-900 flex items-center">
-                Mais Opções
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-            </div>
-          </nav>
-          <Link href="/login">
-            <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
-          </Link>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative bg-gray-600 text-white py-20 overflow-hidden">
@@ -137,56 +109,13 @@ export default function FAQPage() {
           <h2 className="text-3xl font-bold mb-4">Ainda tem dúvidas?</h2>
           <p className="text-gray-600 mb-8 max-w-md mx-auto">Entre em contato conosco para mais informações.</p>
           <Button variant="outline" className="px-8 bg-transparent">
-            Contact
+            Contate-nos
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-start mb-8">
-            <div className="flex items-center mb-6 md:mb-0">
-              <Image src="/images/logo.png" alt="Sistema de Apoio a Calouros" width={32} height={32} className="mr-2" />
-              <span className="text-xl font-bold">Apoio Calouros</span>
-            </div>
-            <nav className="flex flex-wrap gap-6">
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Um
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Dois
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Três
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Quatro
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Cinco
-              </a>
-            </nav>
-          </div>
-
-          <hr className="border-gray-200 mb-8" />
-
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-            <div className="flex flex-wrap gap-6 mb-4 md:mb-0">
-              <a href="#" className="hover:text-gray-900">
-                Política de Privacidade
-              </a>
-              <a href="#" className="hover:text-gray-900">
-                Termos de Serviço
-              </a>
-              <a href="#" className="hover:text-gray-900">
-                Configurações de Cookies
-              </a>
-            </div>
-            <div>© 2025 Relante. Todos os direitos reservados.</div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

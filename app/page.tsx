@@ -1,36 +1,14 @@
+"use client"
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
 import Link from "next/link"
+import Navbar from "@/components/navbar/navbar";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="mr-2" />
-            <Link href="/" className="text-xl font-bold">
-              <span className="text-xl font-bold">ApoiaUFC</span>
-            </Link>
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">Início</Link>
-            <Link href="/faq" className="text-gray-600 hover:text-gray-900">FAQ</Link>
-            <a href="#" className="text-gray-600 hover:text-gray-900">Fórum</a>
-            <div className="relative group">
-              <button className="text-gray-600 hover:text-gray-900 flex items-center">
-                Mais Opções
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-            </div>
-          </nav>
-          <Link href="/login">
-            <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
-          </Link>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="py-20 bg-white">

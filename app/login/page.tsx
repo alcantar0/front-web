@@ -48,6 +48,8 @@ const handleSubmit = async (e: React.FormEvent) => {
     }
 
     localStorage.setItem("token", data.token)
+    localStorage.setItem("name", data.name)
+
     alert("Login realizado com sucesso!")
     router.push("/")
   } catch (err) {
