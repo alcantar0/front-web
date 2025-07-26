@@ -1,26 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Navbar from "@/components/navbar/navbar";
 
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="mr-2" />
-            <Link href="/" className="text-xl font-bold">
-              ApoiaUFC
-            </Link>
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/faq" className="text-gray-600 hover:text-gray-900">FAQ</Link>
-            <Link href="/forum" className="text-gray-600 hover:text-gray-900">Fórum</Link>
-            <Link href="/perfil" className="text-gray-600 hover:text-gray-900">Perfil</Link>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Welcome Section */}
       <section className="py-20 bg-white">

@@ -4,8 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation"
 
 export default function Navbar() {
+    const router = useRouter()
     const [name, setName] = useState("Visitante");
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -64,7 +66,12 @@ export default function Navbar() {
                     </Link>
                 ) : (
                     <div className="flex items-center">
-                        <span className="text-gray-600 mr-4">Olá, {name}!</span>
+                        <Button 
+                            className="bg-white-600 text-black hover:bg-gray-100 transition-colors border border-gray-300"
+                            onClick={() => router.push("/dashboard")}
+                        >
+                            Olá, {name}!
+                        </Button>
                     </div>
                 )}
             </div>
