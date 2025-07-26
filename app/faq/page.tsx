@@ -25,22 +25,10 @@ export default function FAQPage() {
             <Link href="/" className="text-gray-600 hover:text-gray-900">
               Início
             </Link>
-            <a href="#" className="text-gray-600 hover:text-gray-900">
-              FAQ
-            </a>
-            <a href="#" className="text-gray-600 hover:text-gray-900">
-              Forum
-            </a>
-            <div className="relative group">
-              <button className="text-gray-600 hover:text-gray-900 flex items-center">
-                Mais Opções
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-            </div>
+            <Link href="/forum" className="text-gray-600 hover:text-gray-900">
+              Fórum
+            </Link>
           </nav>
-          <Link href="/login">
-            <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
-          </Link>
         </div>
       </header>
 
@@ -136,38 +124,9 @@ export default function FAQPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ainda tem dúvidas?</h2>
           <p className="text-gray-600 mb-8 max-w-md mx-auto">Entre em contato conosco para mais informações.</p>
-          <Button variant="outline" className="px-8 bg-transparent">
-            Contact
-          </Button>
+          <p>duvidas@ufc.com.br</p>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-white border-t py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-start mb-8">
-            <div className="flex items-center mb-6 md:mb-0">
-              <Image src="/images/logo.png" alt="Sistema de Apoio a Calouros" width={32} height={32} className="mr-2" />
-              <span className="text-xl font-bold">Apoio Calouros</span>
-            </div>
-            <nav className="flex flex-wrap gap-6">
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Um
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Dois
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Três
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Quatro
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Link Cinco
-              </a>
-            </nav>
-          </div>
 
           <hr className="border-gray-200 mb-8" />
 
@@ -183,10 +142,8 @@ export default function FAQPage() {
                 Configurações de Cookies
               </a>
             </div>
-            <div>© 2025 Relante. Todos os direitos reservados.</div>
+            <div>© 2025 UFC. Todos os direitos reservados.</div>
           </div>
         </div>
-      </footer>
-    </div>
   )
 }
