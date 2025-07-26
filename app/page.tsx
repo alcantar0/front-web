@@ -23,7 +23,7 @@ export default function HomePage() {
                 <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
               </Link>
               <Link href="/register">
-                <Button variant="outline" className="border-gray-400">Cadastrar</Button>
+                <Button variant="outline" className="border-gray-400">Cadastre-se</Button>
               </Link>
             </div>
           </div>

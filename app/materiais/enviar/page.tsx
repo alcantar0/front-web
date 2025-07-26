@@ -70,8 +70,18 @@ export default function EnviarMaterialPage() {
               required
             />
           </div>
-
-          <Button type="submit" className="bg-black text-white hover:bg-gray-800">Enviar</Button>
+            <div className="flex gap-4">
+            <Button 
+              type="button" 
+              onClick={() => router.back()} 
+              className="bg-gray-500 text-white hover:bg-gray-600"
+            >
+              Voltar
+            </Button>
+            <Button type="submit" className="bg-black text-white hover:bg-gray-800">
+              Enviar
+            </Button>
+            </div>
         </form>
 
         {mensagem && <p className="mt-4 text-green-600">{mensagem}</p>}

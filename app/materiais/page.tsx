@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 import { useRouter } from "next/navigation";
+import Navbar from "@/components/navbar/navbar";
 export default function SupportMaterialsPage() {
   const router = useRouter();
 
@@ -51,63 +52,28 @@ export default function SupportMaterialsPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="mr-2"
-            />
-            <Link href="/" className="text-xl font-bold">
-              ApoiaUFC
-            </Link>
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
-              Início
-            </Link>
-            <Link href="/faq" className="text-gray-600 hover:text-gray-900">
-              FAQ
-            </Link>
-            <Link href="/forum" className="text-gray-600 hover:text-gray-900">
-              Fórum
-            </Link>
-            <Link href="/materiais" className="text-gray-900 font-semibold">
-              Materiais de apoio
-            </Link>
-          </nav>
-          <Link href="/login">
-            <Button className="bg-black text-white hover:bg-gray-800">
-              Entrar
-            </Button>
-          </Link>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 flex flex-col lg:flex-row items-start justify-between">
           <div>
-            <p className="text-sm uppercase text-gray-600 mb-2">Contribua</p>
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Materiais de Apoio
             </h1>
-          </div>
-          <div className="max-w-xl text-gray-600">
-            <p className="mb-4">
-              Aqui, você pode compartilhar e acessar materiais de apoio que
-              enriquecem sua jornada acadêmica. Juntos, vamos construir uma
-              comunidade colaborativa de aprendizado.
-            </p>
-            <div className="flex space-x-2">
-              <Link href="/materiais/enviar">
-                <Button className="bg-black text-white hover:bg-gray-800">
-                  Enviar
-                </Button>
-              </Link>
+            <div className="max-w-xl text-gray-600">
+              <p className="mb-4">
+                Aqui, você pode compartilhar e acessar materiais de apoio que
+                enriquecem sua jornada acadêmica. Juntos, vamos construir uma
+                comunidade colaborativa de aprendizado.
+              </p>
+              <div className="flex space-x-2">
+                <Link href="/materiais/enviar">
+                  <Button className="bg-black text-white hover:bg-gray-800 transition-colors mt-8">
+                    Enviar
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

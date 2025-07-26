@@ -8,6 +8,7 @@ import Image from "next/image";
 
 
 import { useRouter } from 'next/navigation'
+import Navbar from '@/components/navbar/navbar';
 
 interface Question {
   id: number
@@ -76,29 +77,9 @@ export default function ForumPage() {
 
   return (
 
-      <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="mr-2" />
-            <Link href="/" className="text-xl font-bold">
-              <span className="text-xl font-bold">ApoiaUFC</span>
-            </Link>
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">Início</Link>
-            <Link href="/faq" className="text-gray-600 hover:text-gray-900">FAQ</Link>
-            <Link href="/forum" className="text-gray-900 font-semibold">Fórum</Link>
-            <Link href="/materiais" className="text-gray-600 hover:text-gray-900">Materiais de Apoio</Link>
-
-          </nav>
-          <Link href="/login">
-            <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
-          </Link>
-        </div>
-
-      </header>
+    <div className="min-h-screen bg-white">
+    {/* Header */}
+    <Navbar />
 
     <div className="container mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-6">Fórum de Perguntas</h1>
