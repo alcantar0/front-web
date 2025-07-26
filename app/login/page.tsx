@@ -51,7 +51,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     localStorage.setItem("name", data.name)
 
     alert("Login realizado com sucesso!")
-    router.push("/")
+    router.push("/dashboard")
   } catch (err) {
     console.error("Erro na requisição:", err)
     alert("Erro ao conectar à API")

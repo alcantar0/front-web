@@ -37,6 +37,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       },
       body: JSON.stringify({
         email: formData.email,
+        nome_completo: formData.nomeCompleto,
         password: formData.senha,
       }),
     })
@@ -82,7 +83,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="nomeCompleto" className="block text-black font-medium mb-2">
-                  Nome Completo
+                  Nome
                 </label>
                 <input
                   type="text"

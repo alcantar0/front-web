@@ -70,24 +70,29 @@ export default function QuestionPage() {
     fetchAnswers()
   }
 
-  const voteAnswer = async (answerId: number, vote: boolean) => {
-    const token = localStorage.getItem('token')
-    if (!token) {
-      setError('Você precisa estar logado para votar.')
-      return
-    }
-
-    await fetch(`https://back-web-o13t.onrender.com/api/answers/${answerId}/vote`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ vote }),
-    })
-
-    fetchAnswers()
+const voteAnswer = async (answerId: number, vote: number) => {
+  const token = localStorage.getItem('token')
+  if (!token) {
+    setError('Você precisa estar logado para votar.')
+    return
   }
+
+  const res = await fetch(`https://back-web-o13t.onrender.com/api/answers/${answerId}/vote`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ vote }),
+  })
+
+  if (res.ok) {
+    fetchAnswers()
+  } else {
+    const errData = await res.json()
+    setError(errData.error || 'Erro ao votar')
+  }
+}
 
   useEffect(() => {
     fetchQuestion()
@@ -128,12 +133,12 @@ export default function QuestionPage() {
             <p className="text-gray-800">{a.body}</p>
             <div className="flex items-center mt-2 text-sm text-gray-600 space-x-4">
               <span>{a.votes} votos</span>
-              <button onClick={() => voteAnswer(a.id, true)} className="hover:underline text-green-700">
+              <button onClick={() => voteAnswer(a.id, 1)} className="hover:underline text-green-700">
                 Upvote
               </button>
-              <button onClick={() => voteAnswer(a.id, false)} className="hover:underline text-red-700">
+              {/* <button onClick={() => voteAnswer(a.id, -1)} className="hover:underline text-red-700">
                 Downvote
-              </button>
+              </button> */}
             </div>
           </div>
         ))}
