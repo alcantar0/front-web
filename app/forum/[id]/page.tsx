@@ -136,9 +136,9 @@ const voteAnswer = async (answerId: number, vote: number) => {
               <button onClick={() => voteAnswer(a.id, 1)} className="hover:underline text-green-700">
                 Upvote
               </button>
-              <button onClick={() => voteAnswer(a.id, -1)} className="hover:underline text-red-700">
+              {/* <button onClick={() => voteAnswer(a.id, -1)} className="hover:underline text-red-700">
                 Downvote
-              </button>
+              </button> */}
             </div>
           </div>
         ))}
