@@ -8,13 +8,32 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Image from "next/image"
 import Navbar from "@/components/navbar/navbar"
 import Footer from "@/components/footer/footer";
+import { Link } from "lucide-react"
 
 
 export default function FAQPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <Navbar />
+      <header className="bg-white border-b">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center">
+            <Image src="/images/logo.png" alt="Sistema de Apoio a Calouros" width={40} height={40} className="mr-2" />
+            <Link href="/" className="text-xl font-bold">
+              <span className="text-xl font-bold">ApoiaUFC</span>
+            </Link>
+          </div>
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link href="/" className="text-gray-600 hover:text-gray-900">
+              Início
+            </Link>
+            <Link href="/faq" className="text-gray-900 font-semibold">FAQ</Link>
+            <Link href="/forum" className="text-gray-600 hover:text-gray-900">
+              Fórum
+            </Link>
+          </nav>
+        </div>
+      </header>
 
       {/* Hero Section */}
       <section className="relative bg-gray-600 text-white py-20 overflow-hidden">
