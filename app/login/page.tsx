@@ -47,8 +47,11 @@ const handleSubmit = async (e: React.FormEvent) => {
       return
     }
 
+    console.log("Login bem-sucedido:", data)
+
     localStorage.setItem("token", data.token)
     localStorage.setItem("name", data.name)
+    localStorage.setItem("userId", data.userId.toString())
 
     alert("Login realizado com sucesso!")
     router.push("/dashboard")
