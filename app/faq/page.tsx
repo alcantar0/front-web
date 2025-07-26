@@ -5,9 +5,10 @@ export const metadata = {
 
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { ChevronDown } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link";
+import Navbar from "@/components/navbar/navbar"
+import Footer from "@/components/footer/footer";
+
 
 export default function FAQPage() {
   return (
@@ -125,26 +126,14 @@ export default function FAQPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ainda tem dúvidas?</h2>
           <p className="text-gray-600 mb-8 max-w-md mx-auto">Entre em contato conosco para mais informações.</p>
-          <p>duvidas@ufc.com.br</p>
+          <Button variant="outline" className="px-8 bg-transparent">
+            Contate-nos
+          </Button>
         </div>
       </section>
 
-          <hr className="border-gray-200 mb-8" />
-
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-            <div className="flex flex-wrap gap-6 mb-4 md:mb-0">
-              <a href="#" className="hover:text-gray-900">
-                Política de Privacidade
-              </a>
-              <a href="#" className="hover:text-gray-900">
-                Termos de Serviço
-              </a>
-              <a href="#" className="hover:text-gray-900">
-                Configurações de Cookies
-              </a>
-            </div>
-            <div>© 2025 UFC. Todos os direitos reservados.</div>
-          </div>
-        </div>
+      {/* Footer */}
+      <Footer />
+    </div>
   )
 }
