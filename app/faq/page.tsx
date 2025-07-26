@@ -8,6 +8,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Image from "next/image"
 import Navbar from "@/components/navbar/navbar"
 import Footer from "@/components/footer/footer";
+import { Link } from "lucide-react"
 
 
 export default function FAQPage() {
