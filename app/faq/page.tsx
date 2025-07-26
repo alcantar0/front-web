@@ -25,6 +25,7 @@ export default function FAQPage() {
             <Link href="/" className="text-gray-600 hover:text-gray-900">
               Início
             </Link>
+            <Link href="/faq" className="text-gray-900 font-semibold">FAQ</Link>
             <Link href="/forum" className="text-gray-600 hover:text-gray-900">
               Fórum
             </Link>

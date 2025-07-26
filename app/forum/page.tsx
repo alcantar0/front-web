@@ -89,13 +89,9 @@ export default function ForumPage() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-600 hover:text-gray-900">Início</Link>
             <Link href="/faq" className="text-gray-600 hover:text-gray-900">FAQ</Link>
-            <a href="#" className="text-gray-600 hover:text-gray-900">Fórum</a>
-            <div className="relative group">
-              <button className="text-gray-600 hover:text-gray-900 flex items-center">
-                Mais Opções
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-            </div>
+            <Link href="/forum" className="text-gray-900 font-semibold">Fórum</Link>
+            <Link href="/materiais" className="text-gray-600 hover:text-gray-900">Materiais de Apoio</Link>
+
           </nav>
           <Link href="/login">
             <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
