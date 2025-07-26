@@ -4,11 +4,25 @@ import { Button } from "@/components/ui/button"
 import Navbar from "@/components/navbar/navbar"
 import Footer from "@/components/footer/footer";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import image from "../../public/images/hero-bg.png";
+import { useState, useEffect, useRef } from "react";
 
-export default function SupportMaterialPage() {
+interface Event {
+  id: number;
+  titulo: string;
+  descricao: string;
+  palestrante: string;
+  data_inicio: string;
+  duracao_minutos: number;
+  localizacao: string;
+  imagem_url: string;
+  criado_em: string;
+}
+
+export default function EventsPage() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isHoveredPast, setIsHoveredPast] = useState(false);
+  const upcomingRef = useRef<HTMLDivElement>(null);
+  const pastRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -20,10 +34,75 @@ export default function SupportMaterialPage() {
     document.body.style.overflow = 'auto';
   };
 
+  const handleMouseEnterPast = () => {
+    setIsHoveredPast(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleMouseLeavePast = () => {
+    setIsHoveredPast(false);
+    document.body.style.overflow = 'auto';
+  };
+
   useEffect(() => {
+    const upcomingElement = upcomingRef.current;
+    const pastElement = pastRef.current;
+
+    const handleWheelUpcoming = (e: WheelEvent) => {
+      if (isHovered) {
+        e.preventDefault();
+        e.stopPropagation();
+        upcomingElement!.scrollLeft += e.deltaY;
+      }
+    };
+
+    const handleWheelPast = (e: WheelEvent) => {
+      if (isHoveredPast) {
+        e.preventDefault();
+        e.stopPropagation();
+        pastElement!.scrollLeft += e.deltaY;
+      }
+    };
+
+    if (upcomingElement) {
+      upcomingElement.addEventListener('wheel', handleWheelUpcoming, { passive: false });
+    }
+
+    if (pastElement) {
+      pastElement.addEventListener('wheel', handleWheelPast, { passive: false });
+    }
+
     return () => {
       document.body.style.overflow = 'auto';
+      if (upcomingElement) {
+        upcomingElement.removeEventListener('wheel', handleWheelUpcoming);
+      }
+      if (pastElement) {
+        pastElement.removeEventListener('wheel', handleWheelPast);
+      }
     };
+  }, [isHovered, isHoveredPast]);
+
+  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
+  const [pastEvents, setPastEvents] = useState<Event[]>([]);
+
+  const fetchNextEvents = async () => {
+    const res = await fetch('https://back-web-o13t.onrender.com/api/events');
+    const data = await res.json();
+
+    setUpcomingEvents(data);
+  };
+
+  const fetchPastEvents = async () => {
+    const res = await fetch('https://back-web-o13t.onrender.com/api/past-events');
+    const data = await res.json();
+
+    setPastEvents(data);
+  };
+
+  useEffect(() => {
+    fetchNextEvents();
+    fetchPastEvents();
   }, []);
 
   return (
@@ -44,49 +123,49 @@ export default function SupportMaterialPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">Próximos Eventos</h2>
             <div 
+              ref={upcomingRef}
               className={`pb-4 transition-all duration-300 custom-scrollbar ${
                 isHovered ? 'overflow-x-auto' : 'overflow-x-hidden'
               }`}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              onWheel={(e) => {
-                if (isHovered) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  e.currentTarget.scrollLeft += e.deltaY;
-                }
-              }}
               style={{
                 scrollbarWidth: 'none',
-                msOverflowStyle: 'none'
+                scrollbarColor: '#cbd5e1 #f1f5f9'
               }}
             >
               <div className="flex space-x-4 min-w-max">
                 {/* Example upcoming events - replace with actual data */}
-                {[1, 2, 3].map((item) => (
-                  <div 
-                    key={`upcoming-${item}`} 
-                    className="border rounded-lg p-4 hover:shadow-md transition-shadow flex-shrink-0 w-80"
-                  >
-                    <div className="flex flex-col h-full">
-                      <div>
-                        <h3 className="font-bold">Workshop de React</h3>
-                        <p className="text-gray-600">15 de Dezembro, 2023 • 14:00</p>
-                        <Image
-                          src={image}
-                          alt="Workshop de React"
-                          width={300}
-                          height={200}
-                          className="mt-2 rounded-lg"
-                        />
-                        <p className="mt-2">Aprenda os fundamentos do React e construa sua primeira aplicação.</p>
-                      </div>
-                      <div className="mt-auto">
-                        <div className="mt-2 text-sm text-gray-500 mb-2">Local: Centro de Convenções</div>
+                {upcomingEvents.length === 0 ? (
+                  <div className="text-gray-500">Nenhum evento futuro encontrado.</div>
+                ) : (
+                  upcomingEvents.map((item) => (
+                    <div 
+                      key={`upcoming-${item.id}`} 
+                      className="border rounded-lg p-4 hover:shadow-md transition-shadow flex-shrink-0 w-80"
+                    >
+                      <div className="flex flex-col h-full">
+                        <div>
+                          <h3 className="font-bold">{item.titulo}</h3>
+                          <p className="text-gray-600">{new Date(item.data_inicio).toLocaleDateString()} • {new Date(item.data_inicio).toLocaleTimeString()}</p>
+                          <p>Palestrante: {item.palestrante}</p>
+                          <Image
+                            src={item.imagem_url}
+                            alt={item.titulo}
+                            width={300}
+                            height={200}
+                            className="mt-2 rounded-lg"
+                          />
+                          <p className="mt-2">{item.descricao}</p>
+                        </div>
+                        <div className="mt-auto">
+                          <div className="mt-2 text-sm text-gray-500 mb-2">Duração: {item.duracao_minutos} minutos</div>
+                          <div className="mt-2 text-sm text-gray-500 mb-2">Local: {item.localizacao}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </section>
@@ -95,53 +174,52 @@ export default function SupportMaterialPage() {
           <section>
             <h2 className="text-2xl font-semibold mb-4">Eventos Passados</h2>
             <div 
+              ref={pastRef}
               className={`pb-4 transition-all duration-300 custom-scrollbar ${
-                isHovered ? 'overflow-x-auto' : 'overflow-x-hidden'
+                isHoveredPast ? 'overflow-x-auto' : 'overflow-x-hidden'
               }`}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onWheel={(e) => {
-                if (isHovered) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  e.currentTarget.scrollLeft += e.deltaY;
-                }
-              }}
+              onMouseEnter={handleMouseEnterPast}
+              onMouseLeave={handleMouseLeavePast}
               style={{
                 scrollbarWidth: 'none',
-                msOverflowStyle: 'none'
+                scrollbarColor: '#cbd5e1 #f1f5f9'
               }}
             >
               <div className="flex space-x-4 min-w-max">
-                {/* Example upcoming events - replace with actual data */}
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-                  <div 
-                    key={`upcoming-${item}`} 
-                    className="border rounded-lg p-4 hover:shadow-md transition-shadow flex-shrink-0 w-80"
-                  >
-                    <div className="flex flex-col h-full">
-                      <div>
-                        <h3 className="font-bold">Workshop de React</h3>
-                        <p className="text-gray-600">15 de Dezembro, 2023 • 14:00</p>
-                        <Image
-                          src={image}
-                          alt="Workshop de React"
-                          width={300}
-                          height={200}
-                          className="mt-2 rounded-lg"
-                        />
-                        <p className="mt-2">Aprenda os fundamentos do React e construa sua primeira aplicação.</p>
-                      </div>
-                      <div className="mt-auto">
-                        <div className="mt-2 text-sm text-gray-500 mb-2">Local: Centro de Convenções</div>
+                {/* Example past events - replace with actual data */}
+                {pastEvents.length === 0 ? (
+                  <div className="text-gray-500">Nenhum evento passado encontrado.</div>
+                ) : (
+                  pastEvents.map((item) => (
+                    <div 
+                      key={`past-${item.id}`} 
+                      className="border rounded-lg p-4 hover:shadow-md transition-shadow flex-shrink-0 w-80"
+                    >
+                      <div className="flex flex-col h-full">
+                        <div>
+                          <h3 className="font-bold">{item.titulo}</h3>
+                          <p className="text-gray-600">{new Date(item.data_inicio).toLocaleDateString()} • {new Date(item.data_inicio).toLocaleTimeString()}</p>
+                          <p>Palestrante: {item.palestrante}</p>
+                          <Image
+                            src={item.imagem_url}
+                            alt={item.titulo}
+                            width={300}
+                            height={200}
+                            className="mt-2 rounded-lg"
+                          />
+                          <p className="mt-2">{item.descricao}</p>
+                        </div>
+                        <div className="mt-auto">
+                          <div className="mt-2 text-sm text-gray-500 mb-2">Duração: {item.duracao_minutos} minutos</div>
+                          <div className="mt-2 text-sm text-gray-500 mb-2">Local: {item.localizacao}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </section>
-          
           
         </div>
 
