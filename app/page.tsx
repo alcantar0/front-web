@@ -18,7 +18,7 @@ export default function HomePage() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/faq" className="text-gray-600 hover:text-gray-900">FAQ</Link>
             <Link href="/forum" className="text-gray-600 hover:text-gray-900">Fórum</Link>
-            <Link href="/forum" className="text-gray-600 hover:text-gray-900">Materiais de apoio</Link>
+            <Link href="/materiais" className="text-gray-600 hover:text-gray-900">Materiais de apoio</Link>
             <Link href="/events" className="text-gray-600 hover:text-gray-900">Eventos</Link>
           </nav>
           {/* <Link href="/login">
