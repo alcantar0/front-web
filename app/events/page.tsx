@@ -107,10 +107,8 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
       <Navbar />
 
-      {/* Conteúdo da página */}
       <main className="container mx-auto px-4 py-8">
         
         <div className="space-y-8">
@@ -119,7 +117,6 @@ export default function EventsPage() {
             Aqui você pode encontrar informações sobre eventos passados e futuros.
           </p>
           
-          {/* Upcoming Events Section */}
           <section>
             <h2 className="text-2xl font-semibold mb-4">Próximos Eventos</h2>
             <div 
@@ -135,7 +132,6 @@ export default function EventsPage() {
               }}
             >
               <div className="flex space-x-4 min-w-max">
-                {/* Example upcoming events - replace with actual data */}
                 {upcomingEvents.length === 0 ? (
                   <div className="text-gray-500">Nenhum evento futuro encontrado.</div>
                 ) : (
@@ -170,7 +166,6 @@ export default function EventsPage() {
             </div>
           </section>
           
-          {/* Past Events Section */}
           <section>
             <h2 className="text-2xl font-semibold mb-4">Eventos Passados</h2>
             <div 
@@ -186,7 +181,6 @@ export default function EventsPage() {
               }}
             >
               <div className="flex space-x-4 min-w-max">
-                {/* Example past events - replace with actual data */}
                 {pastEvents.length === 0 ? (
                   <div className="text-gray-500">Nenhum evento passado encontrado.</div>
                 ) : (
@@ -225,7 +219,6 @@ export default function EventsPage() {
 
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   )

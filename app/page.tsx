@@ -1,14 +1,31 @@
-"use client"
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link"
-import Navbar from "@/components/navbar/navbar";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <Navbar />
+      <header className="bg-white border-b">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center">
+            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="mr-2" />
+            <Link href="/" className="text-xl font-bold">
+              <span className="text-xl font-bold">ApoiaUFC</span>
+            </Link>
+          </div>
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link href="/faq" className="text-gray-600 hover:text-gray-900">FAQ</Link>
+            <Link href="/forum" className="text-gray-600 hover:text-gray-900">Fórum</Link>
+            <Link href="/forum" className="text-gray-600 hover:text-gray-900">Materiais de apoio</Link>
+            <Link href="/events" className="text-gray-600 hover:text-gray-900">Eventos</Link>
+          </nav>
+          {/* <Link href="/login">
+            <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
+          </Link> */}
+        </div>
+      </header>
 
       {/* Hero Section */}
       <section className="py-20 bg-white">
@@ -23,7 +40,7 @@ export default function HomePage() {
                 <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
               </Link>
               <Link href="/register">
-                <Button variant="outline" className="border-gray-400">Cadastre-se</Button>
+                <Button variant="outline" className="border-gray-400">Cadastrar</Button>
               </Link>
             </div>
           </div>

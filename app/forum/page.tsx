@@ -20,7 +20,7 @@ interface Question {
 export default function ForumPage() {
   const router = useRouter()
 
-  const hasRun = useRef(false) // ⚠️ evitar múltiplas execuções
+  const hasRun = useRef(false) 
 
   useEffect(() => {
     if (hasRun.current) return

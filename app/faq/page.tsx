@@ -16,7 +16,7 @@ export default function FAQPage() {
       {/* Header */}
       <Navbar />
 
-      {/* Hero Section */}
+
       <section className="relative bg-gray-600 text-white py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -37,7 +37,6 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -103,7 +102,6 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ainda tem dúvidas?</h2>
@@ -114,7 +112,6 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   )

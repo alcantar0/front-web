@@ -61,6 +61,7 @@ export default function Navbar() {
                     </div>
                 </nav>
                 {name === "Visitante" ? (
+                    
                     <Link href="/login">
                         <Button className="bg-black text-white hover:bg-gray-800">Entrar</Button>
                     </Link>

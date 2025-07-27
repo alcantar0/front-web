@@ -10,7 +10,7 @@ import Navbar from "@/components/navbar/navbar";
 export default function SupportMaterialsPage() {
   const router = useRouter();
 
-  const hasRun = useRef(false); // ⚠️ evitar múltiplas execuções
+  const hasRun = useRef(false)
 
   useEffect(() => {
     if (hasRun.current) return;
@@ -26,7 +26,6 @@ export default function SupportMaterialsPage() {
   type Material = {
     title: string;
     url: string;
-    // add other properties if needed
   };
 
   const [materials, setMaterials] = useState<Material[]>([]);
@@ -51,10 +50,9 @@ export default function SupportMaterialsPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      {/* Header */}
+
       <Navbar />
 
-      {/* Hero */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 flex flex-col lg:flex-row items-start justify-between">
           <div>

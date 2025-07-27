@@ -6,10 +6,8 @@ import Navbar from "@/components/navbar/navbar";
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
       <Navbar />
 
-      {/* Welcome Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between">
           <div className="max-w-xl mb-10 lg:mb-0">
